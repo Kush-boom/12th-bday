@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Kimaya 🎂</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&family=Pacifico&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:'Baloo 2', cursive;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* Background slideshow */
+.bg-slideshow{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+}
+.bg-slideshow img{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0;
+    transition:opacity 2.5s;
+}
+.bg-slideshow img.active{opacity:1}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:-1;
+}
+
+/* Container */
+.container{
+    max-width:420px;
+    margin:20px auto;
+    padding:22px;
+    background:rgba(0,0,0,.5);
+    border-radius:22px;
+    box-shadow:0 0 35px rgba(255,182,193,.6);
+    text-align:center;
+}
+
+/* Tablet */
+@media (min-width:600px) and (max-width:1024px){
+    .container{max-width:620px;padding:28px}
+}
+
+/* Headings */
+h1{
+    font-family:'Pacifico', cursive;
+    font-size:32px;
+    color:#ffd1dc;
+}
+
+/* ✨ Name glow */
+.name{
+    font-size:30px;
+    color:#ffb6c1;
+    animation:nameGlow 3s infinite;
+}
+@keyframes nameGlow{
+    0%,100%{text-shadow:0 0 10px rgba(255,182,193,.6)}
+    50%{text-shadow:0 0 30px rgba(255,105,180,1)}
+}
+
+.sub{font-size:14px;color:#ffe4ec}
+
+/* Main photo */
+.main-photo{
+    width:85%;
+    max-width:280px;
+    height:360px;
+    margin:20px auto;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 0 30px rgba(255,182,193,.9);
+    opacity:0;
+    animation:fadeIn 3s forwards;
+}
+.main-photo img{width:100%;height:100%;object-fit:cover}
+@keyframes fadeIn{to{opacity:1}}
+
+button{
+    width:90%;
+    margin:12px auto;
+    padding:14px;
+    border-radius:26px;
+    border:none;
+    font-size:15px;
+    cursor:pointer;
+    background:linear-gradient(135deg,#ff9ccf,#ffd1dc);
+    color:#4b1c3f;
+    font-weight:bold;
+}
+
+/* 💌 Emotional message (FONT CHANGED) */
+.message{
+    font-family:'Dancing Script', cursive;
+    font-size:24px;
+    line-height:1.9;
+    margin-top:22px;
+    opacity:0;
+    animation:fadeInSlow 4s forwards;
+}
+@keyframes fadeInSlow{to{opacity:1}}
+
+/* ✨ Glow name inside para */
+.name-glow{
+    color:#ffd1dc;
+    animation:innerGlow 3s infinite;
+}
+@keyframes innerGlow{
+    0%,100%{text-shadow:0 0 10px rgba(255,182,193,.6)}
+    50%{text-shadow:0 0 30px rgba(255,105,180,1)}
+}
+
+/* 🎈 Balloons */
+.balloon{
+    position:fixed;
+    bottom:-15%;
+    font-size:30px;
+    animation:floatUp linear infinite;
+    z-index:1;
+}
+@keyframes floatUp{to{transform:translateY(-130vh)}}
+
+/* 🎂 Cake */
+.cake{
+    font-size:80px;
+    margin:12px 0;
+    animation:flicker 1s infinite;
+}
+@keyframes flicker{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.05)}
+    100%{transform:scale(1)}
+}
+
+/* ✨ Candle blow */
+.candle-out{
+    animation:blow 1.5s forwards;
+}
+@keyframes blow{
+    to{opacity:0;transform:scale(0.7)}
+}
+
+/* ✨ Sparkles */
+.sparkle{
+    position:fixed;
+    font-size:20px;
+    animation:spark 2s ease forwards;
+}
+@keyframes spark{
+    to{opacity:0;transform:translateY(-40px) scale(1.5)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-slideshow">
+    <img src="bg1.jpg.jpeg" class="active">
+    <img src="bg2.jpg.jpeg">
+    <img src="bg3.jpg.jpeg">
+    <img src="bg4.jpg.jpeg">
+    <img src="bg5.jpg.jpeg">
+    <img src="bg6.jpg.jpeg">
+    <img src="bg7.jpg.jpeg">
+    <img src="bg8.jpg.jpeg">
+    <img src="bg9.jpg.jpeg">
+    <img src="bg10.jpg.jpeg">
+    <img src="bg11.jpg.jpeg">
+    <img src="bg12.jpg.jpeg">
+    <img src="bg13.jpg.jpeg">
+    <img src="bg14.jpg.jpeg">
+    <img src="bg15.jpg.jpeg">
+    <img src="bg16.jpg.jpeg">
+    <img src="bg17.jpg.jpeg">
+    <img src="bg18.jpg.jpeg">
+</div>
+<div class="overlay"></div>
+
+<!-- 🎵 MUSIC -->
+<audio id="welcomeMusic" loop>
+    <source src="welcome.mp3">
+</audio>
+<audio id="messageMusic" loop>
+    <source src="message.mp3">
+</audio>
+
+<div class="container">
+    <h1>Happy Birthday 🎂</h1>
+    <div class="name">Kimaya ✨</div>
+    <div class="sub">A gift made with love by your brother 💖</div>
+
+    <button onclick="startSurprise()">Tap for your surprise 🎁</button>
+
+    <div id="content" style="display:none">
+        <div class="main-photo">
+            <img src="main.jpg.jpeg">
+        </div>
+
+        <div id="cake" class="cake">🎂🕯️🕯️🕯️</div>
+        <button onclick="blowCandles()">Blow the candles 🕯️</button>
+
+        <div class="message">
+            Happy 12th Birthday <span class="name-glow">Kimaya</span> 💖<br><br>
+
+            You are not just my sister,<br>
+            you are my happiness,<br>
+            my smile,<br>
+            and my biggest blessing.<br><br>
+
+            No matter how big you grow,<br>
+            I’ll always protect you,<br>
+            guide you,<br>
+            and cheer for you in everything you do.<br><br>
+
+            Stay kind. Stay brave.<br>
+            Always keep shining ✨<br><br>
+
+            — Your brother ❤️
+        </div>
+    </div>
+</div>
+
+<script>
+/* Slideshow */
+let i=0;
+const imgs=document.querySelectorAll('.bg-slideshow img');
+setInterval(()=>{
+    imgs[i].classList.remove('active');
+    i=(i+1)%imgs.length;
+    imgs[i].classList.add('active');
+},5000);
+
+/* 🎵 Welcome music on first tap */
+window.addEventListener("click",()=>{
+    const w=document.getElementById("welcomeMusic");
+    if(w.paused){w.volume=0.6;w.play();}
+},{once:true});
+
+/* 🎁 Start */
+function startSurprise(){
+    document.getElementById("content").style.display="block";
+    crossFade();
+    startBalloons();
+}
+
+/* 🎶 Cross-fade music */
+function crossFade(){
+    const w=document.getElementById("welcomeMusic");
+    const m=document.getElementById("messageMusic");
+    m.volume=0;
+    m.play();
+    let f=setInterval(()=>{
+        if(w.volume>0.05){
+            w.volume-=0.05;
+            m.volume+=0.05;
+        }else{
+            w.pause();
+            w.currentTime=0;
+            clearInterval(f);
+        }
+    },200);
+}
+
+/* 🎈 Balloons */
+function startBalloons(){
+    setInterval(()=>{
+        let b=document.createElement('div');
+        b.className='balloon';
+        b.innerText=['🎈','🎉','🎊'][Math.floor(Math.random()*3)];
+        b.style.left=Math.random()*100+'vw';
+        b.style.animationDuration=(10+Math.random()*5)+'s';
+        document.body.appendChild(b);
+        setTimeout(()=>b.remove(),16000);
+    },700);
+}
+
+/* 🕯️ Blow candles */
+function blowCandles(){
+    const cake=document.getElementById("cake");
+    cake.classList.add("candle-out");
+
+    for(let i=0;i<15;i++){
+        let s=document.createElement('div');
+        s.className='sparkle';
+        s.innerText='✨';
+        s.style.left=Math.random()*100+'vw';
+        s.style.top=Math.random()*100+'vh';
+        document.body.appendChild(s);
+        setTimeout(()=>s.remove(),2000);
+    }
+}
+</script>
+
+</body>
+</html>
